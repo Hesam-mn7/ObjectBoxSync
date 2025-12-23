@@ -23,7 +23,6 @@ class MyApp : Application() {
     var syncClient: SyncClient? = null
         private set
 
-    // اضافه کردن State برای نگه داشتن داده‌ها
     var customersState: MutableState<List<Customer>> = mutableStateOf(emptyList())
 
     override fun onCreate() {
@@ -72,10 +71,8 @@ class MyApp : Application() {
                 override fun onSyncChanges(syncChanges: Array<out SyncChange?>?) {
                     Log.d(TAG, "onSyncChanges: sync changed ${syncChanges?.get(0)}")
 
-                    // دریافت تمام مشتری‌ها از دیتابیس
-                    val updatedCustomers = boxStore.boxFor(Customer::class.java).all
+                    val updatedCustomers = boxStore.boxFor(Customer::class.java).all //get customers from db
 
-                    // بروزرسانی UI با داده‌های جدید
                     customersState.value = updatedCustomers  // Update UI with new data
                 }
 
@@ -91,7 +88,6 @@ class MyApp : Application() {
             Log.e(TAG, "Sync START FAILED", e)
         }
 
-        // بارگذاری داده‌ها از دیتابیس در هنگام شروع
         loadCustomers()
     }
 

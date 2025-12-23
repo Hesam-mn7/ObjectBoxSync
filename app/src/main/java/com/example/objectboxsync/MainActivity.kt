@@ -28,7 +28,6 @@ class MainActivity : ComponentActivity() {
             val app = context.applicationContext as MyApp
             val customerBox = remember { app.boxStore.boxFor(Customer::class.java) }
 
-            // استفاده از داده‌های موجود در customersState
             CustomerScreen(customerBox = customerBox, customersState = app.customersState)
         }
     }
@@ -40,7 +39,7 @@ fun CustomerScreen(customerBox: Box<Customer>, customersState: MutableState<List
     var description by remember { mutableStateOf("") }
     var selectedCustomer by remember { mutableStateOf<Customer?>(null) }
 
-    val customers = customersState.value  // داده‌های به روز شده از Sync
+    val customers = customersState.value
 
     // عملکرد ذخیره مشتری
     fun saveCustomer() {
@@ -59,7 +58,6 @@ fun CustomerScreen(customerBox: Box<Customer>, customersState: MutableState<List
             Log.d("CustomerUI", "saveCustomer: UPDATE customer ${updatedCustomer.customerName}")
         }
 
-        // پاک کردن فرم
         name = ""
         description = ""
         selectedCustomer = null
