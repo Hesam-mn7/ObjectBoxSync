@@ -41,7 +41,6 @@ fun CustomerScreen(customerBox: Box<Customer>, customersState: MutableState<List
 
     val customers = customersState.value
 
-    // عملکرد ذخیره مشتری
     fun saveCustomer() {
         if (name.isBlank()) {
             Log.d("CustomerUI", "saveCustomer: name is blank, ignore")
@@ -63,7 +62,6 @@ fun CustomerScreen(customerBox: Box<Customer>, customersState: MutableState<List
         selectedCustomer = null
     }
 
-    // عملکرد حذف مشتری
     fun deleteCustomer(customer: Customer) {
         customerBox.remove(customer)
         Log.d("CustomerUI", "deleteCustomer: Deleted customer ${customer.customerName}")
@@ -101,7 +99,6 @@ fun CustomerScreen(customerBox: Box<Customer>, customersState: MutableState<List
 
         Spacer(Modifier.height(24.dp))
 
-        // نمایش لیست مشتری‌ها
         LazyColumn {
             items(customers) { customer ->
                 Row(
