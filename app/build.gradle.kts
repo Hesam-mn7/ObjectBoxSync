@@ -63,6 +63,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // ❌ اینو فعلاً حذف کن؛ خود پلاگین sync لایبرری مناسب رو اضافه می‌کنه
-    // releaseImplementation(libs.objectbox.android)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
